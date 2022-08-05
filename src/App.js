@@ -11,12 +11,14 @@ function App() {
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
-                        let Layout = DefaultLayout;
+                        let Layout;
 
                         if (route.layout) {
                             Layout = route.layout;
                         } else if (route.layout === null) {
                             Layout = Fragment;
+                        } else if (route.layout === undefined) {
+                            Layout = DefaultLayout;
                         }
 
                         return (
