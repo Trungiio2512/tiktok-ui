@@ -1,0 +1,47 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    cursor: pointer;
+    background-color: #fff;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.09);
+    }
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
+.info {
+    flex: 1;
+}
+
+.name {
+    display: flex;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 600;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    .check {
+        font-size: 1.4rem;
+        margin-left: 6px;
+        color: rgb(32, 213, 236);
+    }
+}
+
+.username {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
