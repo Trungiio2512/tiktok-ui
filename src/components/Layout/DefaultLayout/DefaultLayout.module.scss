@@ -7,8 +7,9 @@
     width: var(--default-layout-width);
     margin: 0 auto;
     display: flex;
+    margin-top: var(--default-layout-header-height);
 }
 
-.content{
+.content {
     flex: 1;
 }
