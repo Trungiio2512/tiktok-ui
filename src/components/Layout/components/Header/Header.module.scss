@@ -10,6 +10,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
+    background-color: var(--white);
 }
 
 .inner {
@@ -102,5 +103,4 @@
 }
 
 .actions {
-    min-width: 276px;
 }

@@ -30,8 +30,13 @@ body {
 }
 
 input,
-button {
+button,
+[tabindex] {
     border: none;
     outline: none;
     background-color: transparent;
+}
+
+a[href] {
+    text-decoration: none;
 }
