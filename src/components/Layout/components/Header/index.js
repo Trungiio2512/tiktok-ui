@@ -25,6 +25,16 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Ngôn ngữ',
+            data: [
+                {
+                    code: 'vi',
+                    title: 'Tiếng việt',
+                },
+                { code: 'en', title: 'English' },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faQuestionCircle} />,
@@ -46,6 +56,10 @@ function Header() {
         }, 0);
         return () => clearTimeout(timseSearch);
     }, []);
+
+    const handleChange = (menuItem) => {
+        console.log(menuItem);
+    };
 
     return (
         <header className={cx('wrapper')}>
@@ -87,7 +101,7 @@ function Header() {
                     <Button primary to="/login">
                         Log in
                     </Button>
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleChange}>
                         <button className={cx('more-btn')}>
                             <FontAwesomeIcon icon={faEllipsisV} />
                         </button>
