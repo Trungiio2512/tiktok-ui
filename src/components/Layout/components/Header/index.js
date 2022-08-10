@@ -1,22 +1,29 @@
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import HeadlessTippy from '@tippyjs/react/headless';
 import { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+    faCloudUpload,
+    faCog,
+    faCoins,
     faEarthAsia,
     faEllipsisV,
     faKeyboard,
     faSearch,
+    faSignOutAlt,
     faSpinner,
     faTimesCircle,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons';
 //----------------------------------------------------------------
-import styles from './Header.module.scss';
 import images from '~/asstes/images';
-import { Wrapper as PropperWrapper } from '~/components/Propper';
-import AccountItem from '~/components/AccountItem';
 import Button from '~/components/Button';
+import styles from './Header.module.scss';
 import Menu from '~/components/Propper/Menu';
+import AccountItem from '~/components/AccountItem';
+import { Wrapper as PropperWrapper } from '~/components/Propper';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
@@ -47,8 +54,30 @@ const MENU_ITEMS = [
     },
 ];
 
+const USER_MENU = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'Xem hồ sơ',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Nhận xu',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCog} />,
+        title: 'Cài đặt',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faSignOutAlt} />,
+        title: 'Đăng xuất',
+        separate: true,
+    },
+];
+
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
+    const currentUser = true;
 
     useEffect(() => {
         const timseSearch = setTimeout(() => {
@@ -69,7 +98,7 @@ function Header() {
                     <img src={images.logo} alt="Tiktok" />
                 </div>
                 {/* {Search} */}
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult > 0}
                     render={(attrs) => (
@@ -95,16 +124,39 @@ function Header() {
                             <FontAwesomeIcon icon={faSearch} />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
+                {/* action user  */}
                 <div className={cx('actions')}>
-                    <Button text>Upload</Button>
-                    <Button primary to="/login">
-                        Log in
-                    </Button>
-                    <Menu items={MENU_ITEMS} onChange={handleChange}>
-                        <button className={cx('more-btn')}>
-                            <FontAwesomeIcon icon={faEllipsisV} />
-                        </button>
+                    {currentUser ? (
+                        <>
+                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
+                                <span tabIndex="0">
+                                    <Button className={cx('actions-btn')}>
+                                        <FontAwesomeIcon icon={faCloudUpload} />
+                                    </Button>
+                                </span>
+                            </Tippy>
+                        </>
+                    ) : (
+                        <>
+                            <Button text>Upload</Button>
+                            <Button medium primary to="/login">
+                                Log in
+                            </Button>
+                        </>
+                    )}
+                    <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleChange}>
+                        {currentUser ? (
+                            <img
+                                className={cx('user-avatar')}
+                                alt="Nguyen Van A"
+                                src="https://haycafe.vn/wp-content/uploads/2022/03/Avatar-hai-1-600x600.jpg"
+                            ></img>
+                        ) : (
+                            <button className={cx('more-btn')}>
+                                <FontAwesomeIcon icon={faEllipsisV} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

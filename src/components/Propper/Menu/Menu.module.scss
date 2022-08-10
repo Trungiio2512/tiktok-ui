@@ -1,7 +1,8 @@
 .menu-list {
     width: 224px;
     .menu-item {
-        margin-left: 0;
+        margin-left: 0 !important;
+        justify-content: flex-start;
     }
 }
 .menu-wrapper {
@@ -10,13 +11,15 @@
 
 .menu-item {
     width: 100%;
-    justify-content: flex-start;
     border-radius: 0;
     font-weight: 600;
     padding: 10px 16px;
     line-height: 2rem;
     &:hover {
         background-color: rgba(22, 24, 35, 0.09);
+    }
+    &.separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
     }
 }
 

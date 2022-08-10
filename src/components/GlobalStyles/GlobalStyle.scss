@@ -42,3 +42,22 @@ a[href] {
     color: rgba(22, 24, 35, 1);
     text-decoration: none;
 }
+
+// custom tippy-tolltip
+
+body {
+    .tippy-box {
+        background-color: rgba(84, 84, 84, 1);
+        font-weight: 600;
+        line-height: 22px;
+        font-size: 1.6rem;
+        border-radius: 8px;
+    }
+    .tippy-arrow {
+        background-color: rgba(84, 84, 84, 1);
+    }
+
+    .tippy-content {
+        padding: 6px 9px 8px;
+    }
+}
