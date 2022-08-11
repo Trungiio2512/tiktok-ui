@@ -1,5 +1,4 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@300;400;500;600;700&display=swap');
 
 :root {
     // default layout
@@ -24,7 +23,7 @@ html {
 }
 
 body {
-    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-family: 'ProximaNova', sans-serif;
     font-size: 1.6rem;
     text-rendering: optimizeLegibility;
     color: rgba(22, 24, 35, 1);
@@ -41,6 +40,18 @@ button,
 a[href] {
     color: rgba(22, 24, 35, 1);
     text-decoration: none;
+}
+
+//fonts emmbeded
+@font-face {
+    font-family: ProximaNova;
+    src: url('/asstes/fonts/Proxima-Nova-Regular.woff2');
+    font-weight: 400;
+}
+@font-face {
+    font-family: ProximaNova;
+    src: url('/asstes/fonts/ProximaNova-Semibold.woff2');
+    font-weight: 600;
 }
 
 // custom tippy-tolltip

@@ -1,17 +1,15 @@
-import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import Tippy from '@tippyjs/react';
+import classNames from 'classnames/bind';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-    faCloudUpload,
     faCog,
     faCoins,
     faEarthAsia,
     faEllipsisV,
     faKeyboard,
-    faSearch,
     faSignOutAlt,
     faSpinner,
     faTimesCircle,
@@ -19,12 +17,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 //----------------------------------------------------------------
 import images from '~/asstes/images';
+import Image from '~/components/Image';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import Menu from '~/components/Propper/Menu';
 import AccountItem from '~/components/AccountItem';
-import { Wrapper as PropperWrapper } from '~/components/Propper';
+import { SearchIcon } from '~/components/Icons';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import { Wrapper as PropperWrapper } from '~/components/Propper';
+import { MessageIcon, UploadIcon, InboxIcon } from '~/components/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -121,7 +122,7 @@ function Header() {
                         <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faSearch} />
+                            <SearchIcon />
                         </button>
                     </div>
                 </HeadlessTippy>
@@ -129,12 +130,21 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
-                                <span tabIndex="0">
-                                    <Button className={cx('actions-btn')}>
-                                        <FontAwesomeIcon icon={faCloudUpload} />
-                                    </Button>
-                                </span>
+                            <Tippy delay={[0, 200]} content="Tải video" placement="bottom">
+                                <Button className={cx('actions-btn')}>
+                                    <UploadIcon />
+                                </Button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Tin nhắn" placement="bottom">
+                                <Button className={cx('actions-btn')}>
+                                    <MessageIcon />
+                                </Button>
+                            </Tippy>
+
+                            <Tippy delay={[0, 200]} content="Hộp thư" placement="bottom">
+                                <Button className={cx('actions-btn')}>
+                                    <InboxIcon />
+                                </Button>
                             </Tippy>
                         </>
                     ) : (
@@ -147,11 +157,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 alt="Nguyen Van A"
                                 src="https://haycafe.vn/wp-content/uploads/2022/03/Avatar-hai-1-600x600.jpg"
-                            ></img>
+                            />
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisV} />

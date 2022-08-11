@@ -4,7 +4,7 @@
     justify-content: center;
     border-radius: 4px;
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 400;
     line-height: 2rem;
     cursor: pointer;
     background-color: var(--white);
@@ -13,10 +13,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-family: 'IBM Plex Sans Condensed', sans-serif;
-
+    font-family: 'ProximaNova', sans-serif;
     + .wrapper {
-        margin-left: 8px;
+        margin-left: 14px;
     }
 
     &.disabled {
