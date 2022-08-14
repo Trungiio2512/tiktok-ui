@@ -9,7 +9,7 @@ import styles from './Search.module.scss';
 import { SearchIcon } from '~/components/Icons';
 import { Wrapper as PropperWrapper } from '~/components/Propper';
 import { useDebounce } from '~/hooks';
-import * as searchService from '~/apiServieces/searchServices';
+import * as searchService from '~/apiServices/searchService';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -47,6 +47,14 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleChangeInput = (e) => {
+        const searchValue = e.target.value;
+        if (searchValue.startsWith(' ')) {
+            return;
+        }
+        setSearchValue(searchValue);
+    };
+
     return (
         <Tippy
             interactive
@@ -69,7 +77,7 @@ function Search() {
                     value={searchValue}
                     spellCheck={false}
                     placeholder="Tìm kiếm tài khoản và video"
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChangeInput}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -80,7 +88,7 @@ function Search() {
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <SearchIcon />
                 </button>
             </div>

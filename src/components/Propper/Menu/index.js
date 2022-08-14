@@ -9,7 +9,7 @@ import { Wrapper as PropperWrapper } from '~/components/Propper';
 
 const cx = classNames.bind(styles);
 
-function Menu({ children, items = [], onChange = () => {} }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }) {
     const [history, setHistory] = useState([{ data: items }]);
     const currrentMenu = history[history.length - 1];
     const hanldeBackMenu = () => {
@@ -38,6 +38,7 @@ function Menu({ children, items = [], onChange = () => {} }) {
             interactive
             offset={[30, 10]}
             delay={[0, 500]}
+            hideOnClick={hideOnClick}
             placement="bottom-end"
             render={(attrs) => (
                 <div tabIndex="-1" className={cx('menu-list')} {...attrs}>
