@@ -32,10 +32,7 @@ const MENU_ITEMS = [
         children: {
             title: 'Ngôn ngữ',
             data: [
-                {
-                    code: 'vi',
-                    title: 'Tiếng việt',
-                },
+                { code: 'vi', title: 'Tiếng việt' },
                 { code: 'en', title: 'English' },
             ],
         },

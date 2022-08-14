@@ -42,9 +42,9 @@ function Menu({ children, items = [], hideOnClick = false, onChange = () => {} }
             placement="bottom-end"
             render={(attrs) => (
                 <div tabIndex="-1" className={cx('menu-list')} {...attrs}>
-                    <PropperWrapper className={cx('menu-wrapper')}>
+                    <PropperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && <Header title={currrentMenu.title} onBack={hanldeBackMenu} />}
-                        {renderItem()}
+                        <div className={cx('menu-body')}> {renderItem()}</div>
                     </PropperWrapper>
                 </div>
             )}

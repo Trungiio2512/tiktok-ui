@@ -5,7 +5,7 @@
         justify-content: flex-start;
     }
 }
-.menu-wrapper {
+.menu-popper {
     padding-bottom: 8px;
 }
 
@@ -28,6 +28,7 @@
     height: 50px;
     position: relative;
     margin-top: -8px;
+    flex-shrink: 0;
 }
 
 .btn-back {
@@ -43,4 +44,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.menu-body {
+    overflow-y: auto;
 }
