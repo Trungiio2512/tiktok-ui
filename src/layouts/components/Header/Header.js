@@ -70,7 +70,7 @@ const USER_MENU = [
 ];
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     const handleChange = (menuItem) => {
         console.log(menuItem);
