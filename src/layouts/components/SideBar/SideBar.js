@@ -10,6 +10,7 @@ import {
     LiveIcon,
     LiveActiveIcon,
 } from '~/components/Icons';
+import SuggetedAccounts from '~/components/SuggetedAccounts';
 
 const cx = classNames.bind(styles);
 
@@ -26,6 +27,8 @@ function SideBar() {
                 />
                 <MenuItem title="Live" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
+            <SuggetedAccounts label="Suggeted Account" />
+            {/* <SuggetedAccounts label="following Account" /> */}
         </aside>
     );
 }
