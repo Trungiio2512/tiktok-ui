@@ -11,12 +11,12 @@ import AccountPreview from './AccountPreview';
 
 const cx = classNames.bind(styles);
 
-function AccountItem() {
+function AccountItem({ data }) {
     const renderPreview = (props) => {
         return (
             <div tabIndex="-1" {...props}>
                 <PropperWrapper>
-                    <AccountPreview />
+                    <AccountPreview data={data} />
                 </PropperWrapper>
             </div>
         );
@@ -27,13 +27,13 @@ function AccountItem() {
         <div>
             <Tippy offset={[-30, 0]} delay={[800, 300]} interactive placement="bottom" render={renderPreview}>
                 <div className={cx('account-item')}>
-                    <img className={cx('avatar')} src={images.noImage} alt="noimgae" />
+                    <img className={cx('avatar')} src={data.avatar} alt={data.nickname} />
                     <div className={cx('item-info')}>
                         <p className={cx('nickname')}>
-                            <strong>nguyenthihoa</strong>
-                            <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+                            <strong>{data.nickname}</strong>
+                            {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
                         </p>
-                        <p className={cx('name')}>Pham Thi Hoa</p>
+                        <p className={cx('name')}>{`${data.first_name} ${data.last_name}`}</p>
                     </div>
                 </div>
             </Tippy>
