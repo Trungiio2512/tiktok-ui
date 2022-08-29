@@ -18,10 +18,12 @@ import Image from '~/components/Image';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import Menu from '~/components/Propper/Menu';
+import Modal from '~/components/Modal'
 import Search from '../Search';
 import config from '~/config';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { MessageIcon, UploadIcon, InboxIcon } from '~/components/Icons';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
@@ -70,11 +72,21 @@ const USER_MENU = [
 ];
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     const handleChange = (menuItem) => {
         console.log(menuItem);
     };
+
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
 
     return (
         <header className={cx('wrapper')}>
@@ -109,6 +121,7 @@ function Header() {
                         </>
                     ) : (
                         <>
+                            {/* <div id="example-portal-btn"></div> */}
                             <Button text>Upload</Button>
                             <Button medium primary to="/login">
                                 Log in
@@ -130,6 +143,20 @@ function Header() {
                     </Menu>
                 </div>
             </div>
+            <button onClick={openModal}>Open Modal</button>
+            <Modal
+                isOpen={modalIsOpen}
+            >
+                <button onClick={closeModal}>close</button>
+                <div>I am a modal</div>
+                <form>
+                    <input />
+                    <button>tab navigation</button>
+                    <button>stays</button>
+                    <button>inside</button>
+                    <button>the modal</button>
+                </form>
+            </Modal>
         </header>
     );
 }
