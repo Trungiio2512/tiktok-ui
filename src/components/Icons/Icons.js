@@ -177,3 +177,20 @@ export const LiveActiveIcon = ({ width = '3.2rem', height = '3.2rem', className 
         ></path>
     </svg>
 );
+
+export const TimeIcon = ({ width = '3.2rem', height = '3.2rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M21.172 24 10.293 13.12a1 1 0 0 1 0-1.414l1.414-1.414a1 1 0 0 1 1.415 0L24 21.172l10.879-10.88a1 1 0 0 1 1.414 0l1.414 1.415a1 1 0 0 1 0 1.414L26.83 24l10.878 10.879a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 0 1-1.414 0L24 26.828 13.122 37.707a1 1 0 0 1-1.415 0l-1.414-1.414a1 1 0 0 1 0-1.414l10.879-10.88Z"
+        />
+    </svg>
+);

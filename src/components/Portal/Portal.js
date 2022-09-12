@@ -7,7 +7,7 @@ function Portal({ children, containerId }) {
         let container = document.querySelector(`#${containerId}`)
         if (!container) {
             container = document.createElement('div')
-            container.setAttribute('id', containerId)
+            container.setAttribute('id', 'container')
             document.body.appendChild(container)
         }
         setWrapper(container)

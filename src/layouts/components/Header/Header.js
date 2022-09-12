@@ -18,7 +18,7 @@ import Image from '~/components/Image';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import Menu from '~/components/Propper/Menu';
-import Modal from '~/components/Modal'
+import Modal from '~/components/Modal';
 import Search from '../Search';
 import config from '~/config';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
@@ -71,21 +71,22 @@ const USER_MENU = [
     },
 ];
 
+const LOGIN_MODAL = 'login_modal';
+
 function Header() {
+    const [modal, setModal] = useState(LOGIN_MODAL);
     const currentUser = false;
 
     const handleChange = (menuItem) => {
         console.log(menuItem);
     };
 
-    const [modalIsOpen, setIsOpen] = useState(false);
-
     function openModal() {
-        setIsOpen(true);
+        setModal(LOGIN_MODAL);
     }
 
     function closeModal() {
-        setIsOpen(false);
+        setModal(null);
     }
 
     return (
@@ -121,9 +122,9 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            {/* <div id="example-portal-btn"></div> */}
+                            <div id="example-portal-btn"></div>
                             <Button text>Upload</Button>
-                            <Button medium primary to="/login">
+                            <Button medium primary onClick={openModal}>
                                 Log in
                             </Button>
                         </>
@@ -143,19 +144,9 @@ function Header() {
                     </Menu>
                 </div>
             </div>
-            <button onClick={openModal}>Open Modal</button>
-            <Modal
-                isOpen={modalIsOpen}
-            >
-                <button onClick={closeModal}>close</button>
-                <div>I am a modal</div>
-                <form>
-                    <input />
-                    <button>tab navigation</button>
-                    <button>stays</button>
-                    <button>inside</button>
-                    <button>the modal</button>
-                </form>
+            <Modal isOpen={modal === LOGIN_MODAL} shouldCloseOverlayClick={false} onRequestClose={closeModal}>
+                <h1>Đăng nhập</h1>
+                <div></div>
             </Modal>
         </header>
     );

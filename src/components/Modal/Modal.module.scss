@@ -1,0 +1,102 @@
+@mixin dfCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin FadeIn {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@mixin GrowUp {
+    animation: grow-up 0.3s ease-in;
+}
+
+@mixin FadeOut {
+    animation: fadeOut 0.3s ease-in forwards;
+}
+@mixin GorwDown {
+    animation: grow-down 0.3s ease-in forwards;
+}
+
+.wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+}
+
+.wrapper.closesing .overlay {
+    @include FadeOut;
+}
+
+.wrapper.closesing .container {
+    @include FadeOut;
+    @include GorwDown;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color: #000, $alpha: 0.5);
+    @include FadeIn;
+}
+
+.container {
+    margin: auto;
+    position: relative;
+    min-width: 400px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 48px;
+    @include FadeIn;
+    @include GrowUp;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes grow-up {
+    from {
+        transform: scale(0.2);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes grow-down {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(0.1);
+    }
+}
+
+.close-btn {
+    @include dfCenter;
+
+    top: 16px;
+    right: 16px;
+    border-radius: 50%;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
