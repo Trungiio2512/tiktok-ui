@@ -21,6 +21,7 @@ const Button = forwardRef(
             text = false,
             disabled = false,
             rounded = false,
+            full = false,
             className,
             onClick,
             children,
@@ -60,6 +61,7 @@ const Button = forwardRef(
             text,
             rounded,
             disabled,
+            full
         });
 
         return (

@@ -8,6 +8,11 @@ const get = async (path, options = {}) => {
     return response.data;
 };
 
-export { get };
+const post = async (path, options = {}) => {
+    const response = await httpRequest.post(path, options);
+    return response.data;
+};
+
+export { get, post };
 
 export default httpRequest;

@@ -2,4 +2,15 @@
     width: 356px;
     padding: 20px 0 26px 8px;
     margin-left: -12px;
+    margin-right: 48px;
+}
+.box-login {
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    .title-login {
+        color: var(--desc-color);
+        line-height: 2.2rem;
+        margin-bottom: 24px;
+    }
 }

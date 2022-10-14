@@ -24,6 +24,8 @@ import config from '~/config';
 import { faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import { MessageIcon, UploadIcon, InboxIcon } from '~/components/Icons';
 import { useState } from 'react';
+import LoginModal from '~/layouts/components/LoginModal';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -74,8 +76,9 @@ const USER_MENU = [
 const LOGIN_MODAL = 'login_modal';
 
 function Header() {
-    const [modal, setModal] = useState(LOGIN_MODAL);
-    const currentUser = false;
+    const [modal, setModal] = useState(false);
+    const user = useSelector((state) => state.auth.user?.data);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
     const handleChange = (menuItem) => {
         console.log(menuItem);
@@ -101,7 +104,7 @@ function Header() {
 
                 {/* action user  */}
                 <div className={cx('actions')}>
-                    {currentUser ? (
+                    {isLoggedIn ? (
                         <>
                             <Tippy delay={[0, 200]} content="Tải video" placement="bottom">
                                 <Button className={cx('actions-btn')}>
@@ -119,34 +122,43 @@ function Header() {
                                     <InboxIcon />
                                 </Button>
                             </Tippy>
+                            <Menu items={USER_MENU} onChange={handleChange}>
+                                <Image className={cx('user-avatar')} alt="Nguyen Van A" src={user.avatar} />
+                            </Menu>
                         </>
                     ) : (
                         <>
                             <div id="example-portal-btn"></div>
-                            <Button text>Upload</Button>
+                            <Button medium outline>
+                                Upload
+                            </Button>
                             <Button medium primary onClick={openModal}>
                                 Log in
                             </Button>
+                            <Menu items={USER_MENU} onChange={handleChange}>
+                                <button className={cx('more-btn')}>
+                                    <FontAwesomeIcon icon={faEllipsisV} />
+                                </button>
+                            </Menu>
                         </>
                     )}
-                    <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleChange}>
-                        {currentUser ? (
-                            <Image
-                                className={cx('user-avatar')}
-                                alt="Nguyen Van A"
-                                src="https://haycafe.vn/wp-content/uploads/2022/03/Avatar-hai-1-600x600.jpg"
-                            />
+                    {/* <Menu items={isLoggedIn ? USER_MENU : MENU_ITEMS} onChange={handleChange}>
+                        {isLoggedIn ? (
+                            <Image className={cx('user-avatar')} alt="Nguyen Van A" src={user.avatar} />
                         ) : (
                             <button className={cx('more-btn')}>
                                 <FontAwesomeIcon icon={faEllipsisV} />
                             </button>
                         )}
-                    </Menu>
+                    </Menu> */}
                 </div>
             </div>
-            <Modal isOpen={modal === LOGIN_MODAL} shouldCloseOverlayClick={false} onRequestClose={closeModal}>
-                <h1>Đăng nhập</h1>
-                <div></div>
+            <Modal
+                isOpen={!isLoggedIn && modal === LOGIN_MODAL}
+                shouldCloseOverlayClick={false}
+                onRequestClose={closeModal}
+            >
+                <LoginModal />
             </Modal>
         </header>
     );

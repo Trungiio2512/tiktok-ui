@@ -9,6 +9,22 @@ export const getSuggeted = async (page = 1, per_page = 5) => {
         });
         return res.data;
     } catch (error) {
-        console.log('error');
+        console.log(error.response);
+    }
+};
+
+export const getListFollower = async (page = 1, token) => {
+    try {
+        const res = await httpRequest.get('me/followings', {
+            params: {
+                page,
+            },
+            headers: {
+                token: 'Bearer ' + token,
+            },
+        });
+        return res.data;
+    } catch (error) {
+        console.log(error.response);
     }
 };

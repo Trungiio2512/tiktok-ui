@@ -1,0 +1,35 @@
+.form {
+    margin-top: 12px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group ~ .form-group {
+    margin-top: 12px;
+}
+
+.form-input {
+    border: 1px solid var(--desc-color);
+    padding: 12px 8px;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    color: var(--text-color);
+    caret-color: var(--primary);
+}
+
+.form-label {
+    margin: 0 0 6px 4px;
+}
+
+.error-message {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin: 4px 0;
+}
+
+.btn-login {
+    margin-top: 12px;
+}
