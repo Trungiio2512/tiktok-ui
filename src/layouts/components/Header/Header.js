@@ -135,7 +135,7 @@ function Header() {
                             <Button medium primary onClick={openModal}>
                                 Log in
                             </Button>
-                            <Menu items={USER_MENU} onChange={handleChange}>
+                            <Menu items={MENU_ITEMS} onChange={handleChange}>
                                 <button className={cx('more-btn')}>
                                     <FontAwesomeIcon icon={faEllipsisV} />
                                 </button>

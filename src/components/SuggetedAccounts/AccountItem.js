@@ -7,7 +7,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import styles from './SuggetedAccounts.module.scss';
 import images from '~/asstes/images';
 import { Wrapper as PropperWrapper } from '~/components/Propper';
-import AccountPreview from './AccountPreview';
+import AccountPreview from '../AccountPreview';
 
 const cx = classNames.bind(styles);
 

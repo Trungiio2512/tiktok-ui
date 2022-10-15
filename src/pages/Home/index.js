@@ -1,15 +1,8 @@
-import { useEffect } from 'react';
-import { getListVideo } from '~/services/videoService';
+import ContentVideosRecomend from '~/layouts/components/ContentVideosRecomend';
 
 function Home() {
-    // useEffect(() => {
-    //     const listVideo = async () => {
-    //         const res = await getListVideo();
-    //         console.log(res);
-    //     };
-    //     listVideo();
-    // }, []);
-    return <div>Home Page</div>;
+    return <ContentVideosRecomend />;
+    // return <div></div>
 }
 
 export default Home;

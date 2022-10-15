@@ -4,21 +4,21 @@ import classNames from 'classnames';
 import images from '~/asstes/images';
 import styles from './Image.module.scss';
 
-const Image = forwardRef(({ src, alt, className, fallback: customFallback = images.noImage, ...props }, ref) => {
-    const [fallback, setFallback] = useState('');
+const Image = forwardRef(({ src, alt, className, customFallback = images.noImage, ...props }, ref) => {
+    // const [fallback, setFallback] = useState(null);
 
-    const handleError = () => {
-        setFallback(customFallback);
-    };
+    // const handleError = () => {
+    //     setFallback(customFallback);
+    // };
 
     return (
         <img
-            className={classNames(styles.wrapper, className)}
+            className={classNames(styles.image, className)}
             ref={ref}
-            src={fallback || src}
+            src={src || images.noImage}
             alt={alt}
             {...props}
-            onError={handleError}
+            // onError={handleError}
         />
     );
 });

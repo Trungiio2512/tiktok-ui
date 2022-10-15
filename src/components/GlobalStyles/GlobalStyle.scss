@@ -13,6 +13,8 @@
     --white: #fff;
     --text-color: rgba(22, 24, 35, 0.75);
     --desc-color: rgba(22, 24, 35, 0.5);
+
+    --sidebar-width: 356px;
 }
 
 html {
@@ -57,7 +59,11 @@ a[href] {
     src: url('/asstes/fonts/ProximaNova-Semibold.woff2');
     font-weight: 600;
 }
-
+@font-face {
+    font-family: ProximaNova;
+    src: url('/asstes/fonts/ProximaNova-Semibold.woff2');
+    font-weight: 700;
+}
 // custom tippy-tolltip
 
 body {
