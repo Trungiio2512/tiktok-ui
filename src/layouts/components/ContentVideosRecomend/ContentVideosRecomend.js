@@ -23,7 +23,9 @@ function ContentVideoRecomend() {
         <div>'loading'</div>
     ) : (
         <div className={styles.wrapper}>
-            <VideoRecomend data={videos[3]} />
+            {videos.map((video, index) => (
+                <VideoRecomend data={video} key={index} />
+            ))}
         </div>
     );
 }

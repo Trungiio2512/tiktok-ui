@@ -1,5 +1,7 @@
+import ContentAccountProfile from '~/layouts/components/ContentAccountProfile';
+
 function Profile() {
-    return <h1>Profile Page</h1>;
+    return <ContentAccountProfile />;
 }
 
 export default Profile;

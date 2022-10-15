@@ -12,6 +12,8 @@ import {
     faSignOutAlt,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types';
+
 //----------------------------------------------------------------
 import images from '~/asstes/images';
 import Image from '~/components/Image';
@@ -75,7 +77,7 @@ const USER_MENU = [
 
 const LOGIN_MODAL = 'login_modal';
 
-function Header() {
+function Header({ fullwidth = false }) {
     const [modal, setModal] = useState(false);
     const user = useSelector((state) => state.auth.user?.data);
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -94,7 +96,7 @@ function Header() {
 
     return (
         <header className={cx('wrapper')}>
-            <div className={cx('inner')}>
+            <div className={cx('header', { fullwidth })}>
                 {/* {logo} */}
                 <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt="Tiktok" />
@@ -163,5 +165,9 @@ function Header() {
         </header>
     );
 }
+
+Header.propTypes = {
+    fullwidth: PropTypes.bool,
+};
 
 export default Header;

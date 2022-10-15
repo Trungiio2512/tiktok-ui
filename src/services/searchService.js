@@ -12,3 +12,13 @@ export const search = async (q, type = 'less') => {
         console.log('error');
     }
 };
+
+export const getProfileUser = async (nickname) => {
+    try {
+        const res = await httpRequest.get(`users/@${nickname}`);
+
+        console.log(res);
+    } catch (error) {
+        console.log(error.response);
+    }
+};

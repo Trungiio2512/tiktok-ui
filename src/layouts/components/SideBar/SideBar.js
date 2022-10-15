@@ -9,15 +9,17 @@ import {
     LiveIcon,
     LiveActiveIcon,
 } from '~/components/Icons';
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import Menu, { MenuItem } from './Menu';
 import SuggetedAccounts from '~/components/SuggetedAccounts';
-import { useState, useEffect } from 'react';
 import * as userSuggeted from '~/services/userService';
 import Button from '~/components/Button';
-import { useSelector } from 'react-redux';
 const cx = classNames.bind(styles);
 
-function SideBar() {
+function SideBar({ smallSize = false }) {
     const user = useSelector((state) => state.auth.user);
     const [suggestedUser, setSuggestedUser] = useState([]);
     const [followingList, setFollowingList] = useState(null);
@@ -34,7 +36,7 @@ function SideBar() {
     }, []);
 
     return (
-        <aside className={cx('wrapper')}>
+        <aside className={cx('wrapper', { smallSize })}>
             <Menu>
                 <MenuItem title="Home" to={config.routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
                 <MenuItem
@@ -58,5 +60,9 @@ function SideBar() {
         </aside>
     );
 }
+
+SideBar.propTypes = {
+    smallSize: PropTypes.bool,
+};
 
 export default SideBar;

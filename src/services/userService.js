@@ -13,6 +13,7 @@ export const getSuggeted = async (page = 1, per_page = 5) => {
     }
 };
 
+//dang bi loi config token
 export const getListFollower = async (page = 1, token) => {
     try {
         const res = await httpRequest.get('me/followings', {

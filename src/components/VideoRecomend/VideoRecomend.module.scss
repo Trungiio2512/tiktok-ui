@@ -23,7 +23,7 @@
 
 .container__content {
     flex: 1 1 0;
-    padding-left: 6px;
+    padding-left: 18px;
 }
 .container__info {
     position: relative;
@@ -96,8 +96,9 @@
 .video-wrapper {
     position: relative;
     background: #eee center no-repeat;
-    max-width: 300px;
-    max-height: 600px;
+    // max-width: 300px;
+    height: calc(450px + (100vw - 768px) / 1152 * 100);
+    // max-height: 600px;
     cursor: pointer;
     margin-right: 20px;
 }

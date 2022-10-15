@@ -4,9 +4,15 @@
     margin-left: -12px;
     // margin-right: 48px;
     position: fixed;
-    overflow-y: overlay;
+    overflow-y: scroll;
     max-height: calc(100% - 60px);
 }
+
+.wrapper.smallSize {
+    width: 240px;
+    padding-left: 24px;
+}
+
 .box-login {
     margin-top: 24px;
     margin-bottom: 24px;

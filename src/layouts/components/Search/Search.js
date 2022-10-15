@@ -10,6 +10,7 @@ import { SearchIcon } from '~/components/Icons';
 import { Wrapper as PropperWrapper } from '~/components/Propper';
 import { useDebounce } from '~/hooks';
 import * as searchService from '~/services/searchService';
+import { useLocation } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -17,6 +18,9 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    // const location = useLocation();
+    // const locationPrevRef = useRef(location);
 
     const inputRef = useRef();
     const debouncedValue = useDebounce(searchValue, 800);

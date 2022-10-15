@@ -16,27 +16,50 @@ import {
 import Button from '~/components/Button';
 import Image from '~/components/Image';
 import styles from './VideoRecomend.module.scss';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const cx = classNames.bind(styles);
 
 function VideoRecomend({ data }) {
     const videoRef = useRef();
-    const [playing, setPlaying] = useState(false);
+    const volumeRef = useRef();
+    const [isPlaying, setPlaying] = useState(false);
+    const [isMuted, setMuted] = useState(true);
     console.log(data);
     const handleVideo = () => {
-        if (playing) {
+        if (isPlaying) {
             videoRef.current.pause();
-            setPlaying(!playing);
+            setPlaying(!isPlaying);
         } else {
             videoRef.current.play();
-            setPlaying(!playing);
+            setPlaying(!isPlaying);
         }
+    };
+
+    const hanldeMutedVideo = () => {
+        if (isMuted) {
+            setMuted(!isMuted);
+            videoRef.current.volume = 1;
+        } else {
+            setMuted(!isMuted);
+            videoRef.current.volume = 0;
+        }
+    };
+
+    useEffect(() => {
+        if (isMuted) {
+            // setMuted(!isMuted);
+            videoRef.current.volume = 0;
+        }
+    }, []);
+
+    const handleChangeVolume = (e) => {
+        console.log(e.target.value);
     };
     return (
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
                 <div className={cx('container__avatar')}>
-                    <Link to>
+                    <Link to={`/@${data.user.nickname}`}>
                         <Image className={cx('avatar')} src={data.user.avatar} />
                     </Link>
                 </div>
@@ -80,7 +103,7 @@ function VideoRecomend({ data }) {
                                 </video>
                             </div>
                             <div className={cx('video-player')}>
-                                {playing ? (
+                                {isPlaying ? (
                                     <span className={cx('video-player__btn')} onClick={handleVideo}>
                                         <FontAwesomeIcon icon={faPause} />
                                     </span>
@@ -91,12 +114,23 @@ function VideoRecomend({ data }) {
                                 )}
 
                                 <div className={cx('video-speaker')}>
-                                    <span className={cx('video-speaker__btn')}>
-                                        <FontAwesomeIcon icon={faVolumeMute} />
-                                        {/* <FontAwesomeIcon icon={faVolumeUp} /> */}
-                                    </span>
+                                    {isMuted ? (
+                                        <span className={cx('video-speaker__btn')} onClick={hanldeMutedVideo}>
+                                            <FontAwesomeIcon icon={faVolumeMute} />
+                                        </span>
+                                    ) : (
+                                        <span className={cx('video-speaker__btn')} onClick={hanldeMutedVideo}>
+                                            <FontAwesomeIcon icon={faVolumeUp} />
+                                        </span>
+                                    )}
                                     <div className={cx('video-speaker__control')}>
-                                        <input min="0" max="100" type="range" />
+                                        <input
+                                            ref={volumeRef}
+                                            min="0"
+                                            max="100"
+                                            type="range"
+                                            onChange={handleChangeVolume}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -106,19 +140,19 @@ function VideoRecomend({ data }) {
                                 <span>
                                     <FontAwesomeIcon className={cx('btn-action__icon')} icon={faHeart} />
                                 </span>
-                                <p>1231232</p>
+                                <p>{data.likes_count}</p>
                             </button>
                             <button className={cx('btn-action')}>
                                 <span>
                                     <FontAwesomeIcon className={cx('btn-action__icon')} icon={faCommentDots} />
                                 </span>
-                                <p>1231232</p>
+                                <p>{data.comments_count}</p>
                             </button>
                             <button className={cx('btn-action')}>
                                 <span>
                                     <FontAwesomeIcon className={cx('btn-action__icon')} icon={faShare} />
                                 </span>
-                                <p>1231232</p>
+                                <p>{data.shares_count}</p>
                             </button>
                         </div>
                     </div>
