@@ -50,7 +50,7 @@ function SideBar({ smallSize = false }) {
             {!user && (
                 <div className={cx('box-login')}>
                     <p className={cx('title-login')}>Đăng nhập để follow các tác giả, thích video và xem bình luận</p>
-                    <Button outline full>
+                    <Button outline large full className={cx('btn-login')}>
                         Đăng nhập
                     </Button>
                 </div>
